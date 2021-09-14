@@ -27,17 +27,17 @@ public class Product {
 
     @NotNull(message = "Debes especificar la existencia")
     @Min(value = 0, message = "La existencia mínima es 0")
-    private Float existencia;
+    private Float stock;
 
     public Product() {
     }
 
-    public Product(Integer id, String name, String code, Float price, Float existencia) {
+    public Product(Integer id, String name, String code, Float price, Float stock) {
         this.id = id;
         this.name = name;
         this.code = code;
         this.price = price;
-        this.existencia = existencia;
+        this.stock = stock;
     }
 
     public Integer getId() {
@@ -72,11 +72,11 @@ public class Product {
         this.price = price;
     }
 
-    public Float getExistencia() {
-        return existencia;
+    public Float getStock() {
+        return stock;
     }
 
-    public void setExistencia(Float existencia) {
-        this.existencia = existencia;
+    public void setStock(Float stock) {
+        this.stock = stock;
     }
 }
