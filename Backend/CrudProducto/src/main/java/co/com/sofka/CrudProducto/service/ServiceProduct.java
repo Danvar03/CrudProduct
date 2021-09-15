@@ -52,9 +52,9 @@ public class ServiceProduct implements InterfaceService {
     }
 
     @Override
-    public Product update(Product product, int id) {
-        Optional<Product> productExist = data.findById(id);
-        if(productExist.isEmpty()){
+    public Product update(Product product) {
+
+        if (data.findById(product.getId()).orElse(null) == null) {
             throw new NoSuchElementException("No se puede modificar el producto");
         }
 

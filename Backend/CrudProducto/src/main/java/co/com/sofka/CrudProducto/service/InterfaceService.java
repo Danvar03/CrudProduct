@@ -10,6 +10,6 @@ public interface InterfaceService {
     List<Product> list();
     Product listById(int id);
     void delete(int id);
-    Product update(Product product, int id);
+    Product update(Product product);
 
 }

@@ -37,8 +37,8 @@ public class ProductoController {
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
-    @PutMapping(value = "/actualizarProducto/{id]")
-    ResponseEntity<Product> updateProduct(@RequestBody Product product, @PathVariable int id){
-        return new ResponseEntity<>(service.update(product, id), HttpStatus.OK );
+    @PutMapping(value = "/actualizarProducto")
+    ResponseEntity<Product> updateProduct(@RequestBody Product product){
+        return new ResponseEntity<>(service.update(product), HttpStatus.OK );
     }
 }
