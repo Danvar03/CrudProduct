@@ -1,18 +1,21 @@
-import React, { Fragment } from 'react'
-import { useForm } from 'react-hook-form'
+import React, { useState, Fragment } from 'react';
+
+import { useForm } from "react-hook-form";
 
 const HOST_API = 'http://localhost:8080/api'
 
 
 const AddProduct = (props) => {
+    const [product, setProduct] = useState([]);  
 
-  const {register, errors, handleSubmit} = useForm();
+  const { register, handleSubmit, formState: { errors } } = useForm();
+  const onSubmit = (data, e) => {
+    e.preventDefault();
+    setProduct((producto) => [...product, data]);
+    console.log(data);
+    e.target.reset()
+  };
 
-    const onSubmit = (data, e) => {       
-       console.log(data)
-      props.addProduct(data)
-      
-   }
 
     return (
         <Fragment>
@@ -54,7 +57,7 @@ const AddProduct = (props) => {
                 {errors?.username?.message}
             </div>           
             
-            <button type="submit">Agregar Usuario</button>
+            <button type="submit">Agregar Producto</button>
         </form>
         </Fragment>
         
