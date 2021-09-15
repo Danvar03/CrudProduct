@@ -17,6 +17,7 @@ const AddProduct = (props) => {
   };
 
 
+  
     return (
         <Fragment>
       <form onSubmit={handleSubmit(onSubmit)}>
