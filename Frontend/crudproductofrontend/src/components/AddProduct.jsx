@@ -3,7 +3,7 @@ import React, { useState, Fragment } from 'react';
 import { useForm } from "react-hook-form";
 
 const HOST_API = 'http://localhost:8080/api'
-
+ 
 
 const AddProduct = (props) => {
     const [product, setProduct] = useState([]);  
