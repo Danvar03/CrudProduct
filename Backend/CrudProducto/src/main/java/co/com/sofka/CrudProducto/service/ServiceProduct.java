@@ -25,7 +25,7 @@ public class ServiceProduct implements InterfaceService {
         if (data.exists(Example.of(productAux))) {
             throw new IllegalArgumentException("Ya existe el producto con el id" + product.getId());
         }
-        return null;
+        return data.save(product);
     }
 
     @Override
