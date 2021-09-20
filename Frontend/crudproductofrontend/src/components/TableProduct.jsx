@@ -1,25 +1,17 @@
-import React, {useState, useEffect} from "react";
+import React, {useState, useEffect, useContext} from "react";
+import { Store } from "../Provider";
 
-const Table = () => {
+const TableProduct = () => {
 
     const HOST_API = 'http://localhost:8080/api'
+    const { dispatch, state } = useContext(Store);
     const[data, setData] = useState([]);
-
-    useEffect(() => {
-        async function getData() {
-            let prouctData = await fetch(HOST_API + "/guardarProducto");
-            let json = await ProductData.json();
-            console.log(json);
-            setData([...data,json]);
-        }
-    
-        getData()
-      }, [])
-    
+    console.log("data: ",data)
+    console.log("--------------")
 
    return (
       <div>
-         <h3>Tabla de Productos</h3>
+         <h2>Tabla de itemuctos</h2>
          <table>
             <thead>
                <tr>
@@ -31,14 +23,13 @@ const Table = () => {
             </thead>
             <tbody>
                {
-                  
                   data.length > 0 ? (
-                  data.map((prod) => (
-                    <tr key={prod.id}>
-                        <td>{prod.name}</td>
-                        <td>{prod.code}</td>                        
-                        <td>{prod.amount}</td>
-                        <td>{prod.stock}</td>                    
+                  data.map((item) => (
+                    <tr key={item.id}>
+                        <td>{item.name}</td>
+                        <td>{item.code}</td>                        
+                        <td>{item.amount}</td>
+                        <td>{item.stock}</td>                    
                         <td>
                             <button classname="button muted-button">Editar</button>
                             <button classname="button muted-button">Eliminar</button>
@@ -47,7 +38,7 @@ const Table = () => {
                   ))
                ) : (
                   <tr>
-                     <td colSpan="4">La tabla no tiene productos ingresadas</td>
+                     <td colSpan="4">La tabla no tiene itemuctos ingresadas</td>
                   </tr>
                )}
             </tbody>
@@ -57,3 +48,4 @@ const Table = () => {
 };
 
 
+export default TableProduct;
