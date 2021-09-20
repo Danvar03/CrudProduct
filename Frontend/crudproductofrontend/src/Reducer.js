@@ -1,6 +1,5 @@
-import React from "react";
-
 function reducer(state, action) {
+  console.log("Reducer:",state,action)
   function updateItem() {
     const todoUpItem = state.todo;
     const listUpdateEdit = todoUpItem.list.map((item) => {
@@ -38,6 +37,7 @@ function reducer(state, action) {
   function addItem() {
     const todoUp = state.todo.list;
     todoUp.push(action.item);
+    console.log(action.item)
     return todoUp;
   }
 

@@ -1,12 +1,13 @@
-import React, { useState, Fragment } from "react";
+import React, { useState, Fragment, useContext } from "react";
 import "./Styles.css";
-
+import { Store } from "../Provider";
 import { useForm } from "react-hook-form";
 
 const HOST_API = "http://localhost:8080/api";
 
 const AddProduct = (props) => {
   const [product, setProduct] = useState([]);
+  const { dispatch, state } = useContext(Store);
 
   const {
     register,
@@ -15,16 +16,14 @@ const AddProduct = (props) => {
   } = useForm();
   const onSubmit = (data, e) => {
     e.preventDefault();
-    setProduct({...product, data});
-    console.log(data);
-    e.target.reset();
-    console.log("state product: ", product)
-
+    setProduct({ ...product, data });
+    console.log("state:",data);
+    
     const request = {
       id: null,
-      name: product.name,
-      code: product.code,
-      price: product.price,
+      name: data.name,
+      code: data.code,
+      price: data.price,
       stock: 0,
     };
 
@@ -34,10 +33,16 @@ const AddProduct = (props) => {
       headers: {
         "Content-Type": "application/json",
       },
-      
     })
+      .then((response) => response.json())
+      .then((newProduct) => {
+        console.log("response: ",newProduct)
+        dispatch({ type: "add-item", item: newProduct });
+        setProduct({ name: "" });
+      });
+      
+      e.target.reset();
   };
-
 
   return (
     <Fragment>

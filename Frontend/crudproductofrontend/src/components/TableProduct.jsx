@@ -1,8 +1,10 @@
-import React, {useState, useEffect} from "react";
+import React, {useState, useEffect, useContext} from "react";
+import { Store } from "../Provider";
 
 const TableProduct = () => {
 
     const HOST_API = 'http://localhost:8080/api'
+    const { dispatch, state } = useContext(Store);
     const[data, setData] = useState([]);
     console.log("data: ",data)
     console.log("--------------")
