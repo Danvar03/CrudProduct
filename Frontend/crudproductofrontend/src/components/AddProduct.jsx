@@ -18,16 +18,17 @@ const AddProduct = (props) => {
     setProduct({...product, data});
     console.log(data);
     e.target.reset();
+    console.log("state product: ", product)
 
     const request = {
       id: null,
       name: product.name,
       code: product.code,
       price: product.price,
-      stock: product.stock,
+      stock: 0,
     };
 
-    fetch(HOST_API + "/todos", {
+    fetch(HOST_API + "/guardarProducto", {
       method: "POST",
       body: JSON.stringify(request),
       headers: {
@@ -36,8 +37,6 @@ const AddProduct = (props) => {
       
     })
   };
-
-
 
 
   return (

@@ -18,13 +18,6 @@ public class ServiceProduct implements InterfaceService {
 
     @Override
     public Product save(Product product) {
-        Product productAux = product;
-        //if (productAux.getId() == null){
-        // throw new NoSuchElementException("El id del producto no puede estar repe")
-        //}
-        if (data.exists(Example.of(productAux))) {
-            throw new IllegalArgumentException("Ya existe el producto con el id" + product.getId());
-        }
         return data.save(product);
     }
 
