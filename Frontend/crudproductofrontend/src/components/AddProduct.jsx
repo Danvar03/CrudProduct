@@ -24,7 +24,8 @@ const AddProduct = (props) => {
   return (
     <Fragment>
       <h1> PRODUCTOS </h1>
-      <h4> Llene la siguiente información para agregar un producto: </h4>
+      <h2>Añadir productos</h2>
+      <p> Llene la siguiente información para agregar un producto: </p>
       <form onSubmit={handleSubmit(onSubmit)}>
         <label>Nombre</label>
         <input

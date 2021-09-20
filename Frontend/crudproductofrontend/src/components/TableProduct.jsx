@@ -1,25 +1,25 @@
 import React, {useState, useEffect} from "react";
 
-const Table = () => {
+const TableProduct = () => {
 
     const HOST_API = 'http://localhost:8080/api'
     const[data, setData] = useState([]);
 
-    useEffect(() => {
-        async function getData() {
-            let prouctData = await fetch(HOST_API + "/guardarProducto");
-            let json = await ProductData.json();
-            console.log(json);
-            setData([...data,json]);
-        }
+    // useEffect(() => {
+    //     async function getData() {
+    //         let prouctData = await fetch(HOST_API + "/guardarProducto");
+    //         let json = await ProductData.json();
+    //         console.log(json);
+    //         setData([...data,json]);
+    //     }
     
-        getData()
-      }, [])
+    //     getData()
+    //   }, [])
     
 
    return (
       <div>
-         <h3>Tabla de Productos</h3>
+         <h2>Tabla de Productos</h2>
          <table>
             <thead>
                <tr>
@@ -57,3 +57,4 @@ const Table = () => {
 };
 
 
+export default TableProduct;
