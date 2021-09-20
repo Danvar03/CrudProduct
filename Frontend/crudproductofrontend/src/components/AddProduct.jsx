@@ -15,10 +15,29 @@ const AddProduct = (props) => {
   } = useForm();
   const onSubmit = (data, e) => {
     e.preventDefault();
-    setProduct((producto) => [...product, data]);
+    setProduct({...product, data});
     console.log(data);
     e.target.reset();
+
+    const request = {
+      id: null,
+      name: product.name,
+      code: product.code,
+      price: product.price,
+      stock: product.stock,
+    };
+
+    fetch(HOST_API + "/todos", {
+      method: "POST",
+      body: JSON.stringify(request),
+      headers: {
+        "Content-Type": "application/json",
+      },
+      
+    })
   };
+
+
 
 
   return (
